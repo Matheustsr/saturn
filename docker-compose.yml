@@ -1,0 +1,15 @@
+version: '3'
+# Version about docker compose, bro!
+
+services:
+    app:
+        build: .
+        entrypoint: ./.docker/entrypoint.sh
+        container_name: nest-api
+        ports:
+            - 3003:3000
+            #YOUR_LOCAL_MACHINE_PORT:DOCKER_CONTAINER_PORT
+        volumes:
+            - .:/home/node/app
+
+# I really really need explain ALL? Just read the instructions!
