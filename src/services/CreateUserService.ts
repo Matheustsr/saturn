@@ -6,9 +6,10 @@ interface IUUserRequest {
     name: string;
     email: string;
     admin?: boolean;
+    password: string;
 }
 class CreateUserService {
-    async execute({ name, email, admin }: IUUserRequest) {
+    async execute({ name, email, admin, password }: IUUserRequest) {
         const usersRepository = getCustomRepository(UserRepositories);
 
         if(!email){ // check if contains email
@@ -21,7 +22,7 @@ class CreateUserService {
             throw new Error('User already exists!');
         }
 
-        const user = usersRepository.create({name, email, admin});
+        const user = usersRepository.create({name, email, admin, password});
 
         await usersRepository.save(user)
 

@@ -8,6 +8,7 @@ import './database';
 
 const app = express();
 app.use(express.json());
+app.use(router);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if(err instanceof Error){ // verifica se é do tipo Error
@@ -16,6 +17,5 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     return res.status(500).json({status: 'error'})
 })
 
-app.use(router);
 
 app.listen(3005, () => console.log('Rock time!'));

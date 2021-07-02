@@ -1,13 +1,14 @@
 import Router from 'express';
 import CreateUserController from './controllers/CreateUserController';
-import SessionController from './controllers/SessionController';
+import CreateTagController from './controllers/CreateTagController';
+import { ensureAdmin } from './middlewares/ensureAdmin';
 
 const createUserController = new CreateUserController();
-const sessionController = new SessionController();
+const createTagController = new CreateTagController();
 const router = Router();
 
-router.post('/session', sessionController.store)
 
+router.post('/tags', ensureAdmin, createTagController.handle)
 router.post('/users', createUserController.handle)
 
 export default router;
