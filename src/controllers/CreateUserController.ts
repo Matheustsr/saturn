@@ -1,4 +1,5 @@
 import {Request, Response} from 'express';
+import bcrypt from 'bcryptjs';
 import CreateUserService from '../services/CreateUserService';
 
 
