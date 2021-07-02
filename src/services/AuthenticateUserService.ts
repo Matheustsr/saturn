@@ -28,7 +28,9 @@ class AuthenticateUserService{
         throw new Error('User/password incorrect!');
     }
     const token = sign({email: user.email}, auth.secret, {subject: user.id, expiresIn: auth.expiresIn});
+    return token;
    }
+
 }
 
 export default AuthenticateUserService;
